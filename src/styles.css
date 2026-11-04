@@ -1,31 +1,23 @@
-/* Reset and base styles */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Scroll smoothly to #Section */
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  line-height: 1.7;
-  color: #2c2c2c;
-  background-color: #8b0000;
-  -webkit-font-smoothing: antialiased;
-}
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+body {
+  font-family: 'Antic Slab';
+  line-height: 2.0;
+  color: #131313;
+  background-color: #f83a3a;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Main content */
 .main {
   padding: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* Hero Section */
@@ -69,9 +61,10 @@ body {
 }
 
 .artist-name {
+  font-family: 'Fruktur', cursive;
   font-size: 2.5rem;
   font-weight: 700;
-  color: #fff;
+  color: #0f0f0f;
   text-align: center;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -81,16 +74,12 @@ body {
 /* About Section */
 .about {
   min-height: 60vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(180deg, #f8f8f8 0%, #8b0000 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: calc(5% + 20px) 20px;
   width: 100%;
-  background-image: url('/images/about-background.svg');
-  background-color: #8b0000;
   position: relative;
 }
 
@@ -104,6 +93,7 @@ body {
   width: 100%;
   text-align: center;
   color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .artist-portrait {
@@ -154,6 +144,7 @@ body {
 }
 
 .contact-content h2 {
+  font-family: 'Fruktur', cursive;
   font-size: 2rem;
   font-weight: 700;
   margin: 0;
@@ -212,6 +203,7 @@ body {
 }
 
 .gallery-section-title {
+  font-family: 'Fruktur', cursive;
   font-size: 2.5rem;
   font-weight: 400;
   color: #1a1a1a;
@@ -302,85 +294,6 @@ body {
   margin: 0;
   font-size: 1rem;
   color: #ccc;
-}
-
-/* Lightbox */
-.lightbox {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.95);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.lightbox.active {
-  display: flex;
-  opacity: 1;
-}
-
-.lightbox-content {
-  position: relative;
-  max-width: 90%;
-  max-height: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.lightbox-content img {
-  max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.lightbox-close {
-  position: absolute;
-  top: -50px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 2.5rem;
-  cursor: pointer;
-  padding: 10px 20px;
-  line-height: 1;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.lightbox-close:hover,
-.lightbox-close:focus {
-  transform: scale(1.1);
-  color: #ff6b6b;
-  outline: none;
-}
-
-.lightbox-caption {
-  color: #fff;
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin: 0;
-  text-align: center;
-  letter-spacing: 0.02em;
-}
-
-.lightbox-description {
-  color: #ccc;
-  font-size: 1.05rem;
-  text-align: center;
-  max-width: 600px;
-  margin: 0;
-  line-height: 1.6;
-  font-style: italic;
 }
 
 /* Accessibility: Reduced motion */
