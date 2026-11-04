@@ -1,0 +1,71 @@
+{
+  "sections": [
+    {
+      "id": "about",
+      "title": "About Me",
+      "year": "",
+      "description": "",
+      "artist_bio": "I'm a painter based in New York City, specializing in oil and acrylic landscapes, portraits, and abstract works. My art explores the intersection of nature, human emotion, and abstract expression.",
+      "contact_email": "artist@example.com",
+      "portrait": {
+        "src": "artist-portrait.svg",
+        "alt": "Artist portrait"
+      },
+      "images": []
+    },
+    {
+      "id": "landscapes",
+      "title": "Landscapes",
+      "year": "2020-2024",
+      "description": "A collection of landscape paintings capturing natural beauty.",
+      "images": [
+        {
+          "src": "landscape-01.svg",
+          "alt": "Oil painting of a mountain landscape at sunset",
+          "caption": "Mountain Sunset",
+          "description": "A serene landscape painting depicting mountains under a golden sunset sky."
+        },
+        {
+          "src": "landscape-02.svg",
+          "alt": "Watercolor painting of a coastal scene",
+          "caption": "Coastal Morning",
+          "description": "A watercolor painting of a peaceful coastal morning with gentle waves."
+        }
+      ]
+    },
+    {
+      "id": "portraits",
+      "title": "Portraits",
+      "year": "2018-2024",
+      "description": "Intimate portraits exploring human expression and emotion.",
+      "images": [
+        {
+          "src": "portrait-01.svg",
+          "alt": "Oil portrait of a woman with contemplative expression",
+          "caption": "Contemplation",
+          "description": "An oil portrait capturing a moment of quiet reflection."
+        },
+        {
+          "src": "portrait-02.svg",
+          "alt": "Charcoal sketch of an elderly man",
+          "caption": "The Elder",
+          "description": "A charcoal sketch exploring the textures of age and wisdom."
+        }
+      ]
+    },
+    {
+      "id": "abstract",
+      "title": "Abstract Works",
+      "year": "2019-2024",
+      "description": "Abstract compositions exploring color, form, and emotion.",
+      "images": [
+        {
+          "src": "abstract-01.svg",
+          "alt": "Abstract painting with bold colors and geometric shapes",
+          "caption": "Color Harmony",
+          "description": "An abstract composition using bold colors and geometric forms."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A portfolio website showcasing the artist's paintings and artwork">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <!-- Open Graph metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Artist Portfolio">
+  <meta property="og:description" content="A portfolio website showcasing the artist's paintings and artwork">
+  <meta property="og:url" content="https://yourdomain.com">
+  <meta property="og:image" content="/images/gallery/featured.jpg">
+  
+  <!-- Canonical URL (update with your actual domain when ready) -->
+  <link rel="canonical" href="https://yourdomain.com">
+  
+  <title>Artist Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Main Content -->
+  <main class="main">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <img src="images/dog_skeleton.png" alt="Dog skeleton art" class="hero-image" width="2000" height="1588" loading="lazy">
+        <h1 class="artist-name">Artist Name</h1>
+      </div>
+    </section>
+    
+    <!-- About Section (generated from gallery.json) -->
+    <!-- ABOUT_PLACEHOLDER -->
+
+    <!-- Contact Section (generated from gallery.json) -->
+    <!-- CONTACT_PLACEHOLDER -->
+
+    <!-- Gallery (generated from gallery.json) -->
+    <!-- GALLERY_PLACEHOLDER -->
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Artist. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+      <img id="lightbox-image" src="" alt="">
+      <figcaption id="lightbox-caption"></figcaption>
+      <p id="lightbox-description"></p>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

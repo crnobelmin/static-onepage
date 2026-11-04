@@ -1,0 +1,27 @@
+# Robots.txt for Painter Portfolio
+# https://yourusername.github.io/painter-portfolio/
+
+# Allow normal search engine crawling
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+
+# AI crawler preferences
+# GPTBot - OpenAI's crawler for model training
+User-agent: GPTBot
+Disallow: /
+
+# OAI-SearchBot - OpenAI's crawler for ChatGPT search discovery
+User-agent: OAI-SearchBot
+Allow: /
+
+# Bingbot - Allow for Bing search
+User-agent: Bingbot
+Allow: /
+
+# Allow all other crawlers
+User-agent: *
+Allow: /

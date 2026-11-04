@@ -1,0 +1,14 @@
+{
+  "name": "painter-portfolio",
+  "version": "1.0.0",
+  "description": "A simple, elegant portfolio website for a painter",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "keywords": ["portfolio", "painter", "art"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "image-size": "^1.1.1"
+  }
+}
