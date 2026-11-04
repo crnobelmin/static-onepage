@@ -107,8 +107,7 @@ function generateAboutSection(section) {
   if (!section || section.id !== 'about') {
     return '';
   }
-  let aboutHtml = '<section id="about" class="about">\n';
-  aboutHtml += '  <div class="about-content">\n';
+  let aboutHtml = '<div class="about-content">\n';
   
   // Artist portrait image (optional)
   if (section.portrait && section.portrait.src) {
@@ -127,7 +126,6 @@ function generateAboutSection(section) {
   aboutHtml += '    </div>\n';
   
   aboutHtml += '  </div>\n';
-  aboutHtml += '</section>';
   return aboutHtml;
 }
 
@@ -135,19 +133,16 @@ function generateContactSection(section) {
   if (!section || section.id !== 'about') {
     return '';
   }
-  let contactHtml = '<section id="contact" class="contact">\n';
-  contactHtml += '  <div class="contact-content">\n';
+  let contactHtml = '<div class="contact-content">\n';
   contactHtml += '    <h2>Get in Touch</h2>';
   contactHtml += '    <p>Interested in commissioning a piece or learning more about my work?</p>';
   contactHtml += `    <a href="mailto:${escapeHtml(section.contact_email)}" class="contact-link">Contact Me</a>`;
   contactHtml += '  </div>\n';
-  contactHtml += '</section>';
   return contactHtml;
 }
 
 async function generateGallery(sections) {
-  let galleryHtml = '<section id="gallery" class="gallery">\n';
-  galleryHtml += '  <div class="gallery-container">\n';
+  let galleryHtml = '<div class="gallery-container">\n';
   
   for (const section of sections) {
     if (section.id === 'about') {
@@ -197,8 +192,6 @@ async function generateGallery(sections) {
   }
   
   galleryHtml += '  </div>\n';
-  galleryHtml += '</section>';
-  
   return galleryHtml;
 }
 
@@ -262,14 +255,16 @@ async function main() {
     checkImageFiles(galleryData.sections);
     
     const aboutSection = galleryData.sections.find(s => s.id === 'about');
-    const aboutHtml = generateAboutSection(aboutSection);
-    const contactHtml = generateContactSection(aboutSection);
-    const galleryHtml = await generateGallery(galleryData.sections);
+    const aboutContent = generateAboutSection(aboutSection);
+    const contactContent = generateContactSection(aboutSection);
+    const galleryContent = await generateGallery(galleryData.sections);
     
     let fullHtml = readHtmlTemplate();
-    fullHtml = fullHtml.replace('<!-- ABOUT_PLACEHOLDER -->', aboutHtml);
-    fullHtml = fullHtml.replace('<!-- CONTACT_PLACEHOLDER -->', contactHtml);
-    fullHtml = fullHtml.replace('<!-- GALLERY_PLACEHOLDER -->', galleryHtml);
+    
+    // Insert content into template placeholders
+    fullHtml = fullHtml.replace('<!-- ABOUT_PLACEHOLDER -->', aboutContent);
+    fullHtml = fullHtml.replace('<!-- CONTACT_PLACEHOLDER -->', contactContent);
+    fullHtml = fullHtml.replace('<!-- GALLERY_PLACEHOLDER -->', galleryContent);
     
     // Update footer with dynamic year
     const currentYear = new Date().getFullYear();
