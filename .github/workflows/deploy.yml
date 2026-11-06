@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Build website
-        run: node build.mjs
+        run: node scripts/build.mjs
 
       - name: Verify build output
         run: |
