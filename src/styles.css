@@ -166,7 +166,7 @@ section {
   width: 100%;
 
   /* Style */
-  background-color: rgb(255, 62, 62);
+  background-color: rgb(155, 0, 0);
   color: white;
   box-shadow: rgba(155, 0, 0, 0.3) 0px 10px 10px 0px, rgba(155, 0, 0, 0.5) -20px 10px 20px 0px, rgba(155, 0, 0, 0.5) 20px 10px 20px 0px;
 }
@@ -219,8 +219,6 @@ section {
   outline: 2px solid #fff;
   outline-offset: 4px;
 }
-
-
 
 
 /* -------------------- GALLERY SECTION -------------------- */
@@ -328,10 +326,7 @@ section {
   margin: 0;
 }
 
-
-
-
-/* Footer */
+/* -------------------- FOOTER SECTION -------------------- */
 .footer {
   background-color: #131313;
   color: #fff;
@@ -341,192 +336,4 @@ section {
   padding: 20px 20px;
   text-align: center;
   margin: 0 auto;
-}
-
-
-
-/* Accessibility: Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  
-  .gallery-grid figure,
-  .gallery-grid figure img,
-  .lightbox,
-  .lightbox-close {
-    transition: none;
-  }
-  
-  .gallery-grid figure {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .hero-image {
-    animation: none;
-    transform: none;
-  }
-}
-
-/* Accessibility: Focus visible */
-:focus-visible {
-  outline: 2px solid #8b0000;
-  outline-offset: 4px;
-}
-
-/* Focus invisible (for keyboard navigation) */
-:focus:not(:focus-visible) {
-  outline: none;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hero {
-    min-height: 40vh;
-    padding: 40px 20px;
-  }
-  
-  .hero-image {
-    max-width: 300px;
-  }
-  
-  .artist-name {
-    font-size: 1.8rem;
-  }
-  
-  .about-content {
-    gap: 30px;
-  }
-  
-  .artist-portrait {
-    max-width: 250px;
-  }
-  
-  .about-text {
-    padding: 0 15px;
-  }
-  
-  .about-text .artist-desc {
-    font-size: 1.1rem;
-  }
-  
-  .contact-content {
-    padding: 30px 40px;
-  }
-  
-  .contact-content h2 {
-    font-size: 1.6rem;
-  }
-  
-  .contact-content p {
-    font-size: 1rem;
-  }
-  
-  .contact-link {
-    font-size: 1.2rem;
-    padding: 10px 24px;
-  }
-  
-  .gallery h2 {
-    font-size: 1.8rem;
-  }
-  
-  .gallery p {
-    font-size: 1.1rem;
-  }
-  
-  .gallery-grid {
-    gap: 40px;
-  }
-  
-  .gallery-grid figure img {
-    max-height: 70vh;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    min-height: 35vh;
-    padding: 30px 15px;
-  }
-  
-  .hero-image {
-    max-width: 250px;
-  }
-  
-  .about-content {
-    gap: 25px;
-  }
-  
-  .artist-portrait {
-    max-width: 200px;
-  }
-  
-  .about-text {
-    padding: 0 10px;
-  }
-  
-  .about-text .artist-desc {
-    font-size: 1rem;
-  }
-  
-  .contact-content {
-    padding: 25px 30px;
-  }
-  
-  .contact-content h2 {
-    font-size: 1.4rem;
-  }
-  
-  .contact-content p {
-    font-size: 0.95rem;
-  }
-  
-  .contact-link {
-    font-size: 1.1rem;
-    padding: 10px 20px;
-  }
-  
-  .gallery h2 {
-    font-size: 1.5rem;
-  }
-  
-  .gallery p {
-    font-size: 1rem;
-  }
-  
-  .gallery-grid {
-    gap: 30px;
-  }
-  
-  .gallery-grid figure img {
-    max-height: 60vh;
-  }
-}
-
-/* Print styles */
-@media print {
-  body {
-    font-size: 12pt;
-    color: #000;
-    background: #fff;
-  }
-  
-  .main {
-    padding: 0;
-  }
-  
-  .gallery h2 {
-    font-size: 1.5rem;
-  }
-  
-  .gallery {
-    padding: 0;
-  }
-  
-  .gallery-grid figure img {
-    max-width: 100%;
-    page-break-inside: avoid;
-  }
 }
