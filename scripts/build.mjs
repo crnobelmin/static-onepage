@@ -255,28 +255,22 @@ async function copyStaticAssets() {
       mkdirSync(imagesDestination, { recursive: true });
     }
     // Recursively copy all files and subdirectories
-    const entries = await readdir(imagesSource, { withFileTypes: true });
-    for (const entry of entries) {
-      const sourcePath = join(imagesSource, entry.name);
-      const destPath = join(imagesDestination, entry.name);
-      if (entry.isDirectory()) {
-        mkdirSync(destPath, { recursive: true });
-        const destEntries = await readdir(destPath, { withFileTypes: true });
-        for (const destEntry of destEntries) {
-          const finalSource = join(sourcePath, destEntry.name);
-          const finalDest = join(destPath, destEntry.name);
-          if (existsSync(finalSource)) {
-            if (destEntry.isFile()) {
-              copyFileSync(finalSource, finalDest);
-            } else if (destEntry.isDirectory()) {
-              mkdirSync(finalDest, { recursive: true });
-            }
+    const copyDirectoryRecursive = async (srcDir, destDir) => {
+      const entries = await readdir(srcDir, { withFileTypes: true });
+      for (const entry of entries) {
+        const srcPath = join(srcDir, entry.name);
+        const destPath = join(destDir, entry.name);
+        if (entry.isDirectory()) {
+          if (!existsSync(destPath)) {
+            mkdirSync(destPath, { recursive: true });
           }
+          await copyDirectoryRecursive(srcPath, destPath);
+        } else if (entry.isFile()) {
+          copyFileSync(srcPath, destPath);
         }
-      } else if (entry.isFile()) {
-        copyFileSync(sourcePath, destPath);
       }
-    }
+    };
+    await copyDirectoryRecursive(imagesSource, imagesDestination);
   } else {
     console.warn(`Warning: ${imagesSource} not found, skipping...`);
   }
