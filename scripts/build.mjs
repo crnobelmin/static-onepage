@@ -142,7 +142,7 @@ function generateContactSection(section) {
 }
 
 async function generateGallery(sections) {
-  let galleryHtml = '<div class="gallery-container">\n';
+  let galleryHtml = '';
   
   for (const section of sections) {
     if (section.id === 'about') {
@@ -150,17 +150,14 @@ async function generateGallery(sections) {
     }
     
     galleryHtml += `    <div class="gallery-section" id="${escapeHtml(section.id)}">\n`;
-    galleryHtml += `      <div class="gallery-section-header">\n`;
-    galleryHtml += `        <h2 class="gallery-section-title">${escapeHtml(section.title)}</h2>`;
+    galleryHtml += `      <h1>${escapeHtml(section.title)}</h1>\n`;
     
     if (section.year) {
-      galleryHtml += `        <p class="gallery-section-year">${escapeHtml(section.year)}</p>`;
+      galleryHtml += `      <h4>${escapeHtml(section.year)}</h4>\n`;
     }
     
-    galleryHtml += '      </div>';
-    
     if (section.description) {
-      galleryHtml += `      <p class="gallery-section-description">${escapeHtml(section.description)}</p>`;
+      galleryHtml += `      <p>${escapeHtml(section.description)}</p>\n`;
     }
     
     galleryHtml += '      <div class="gallery-grid">\n';
@@ -173,15 +170,15 @@ async function generateGallery(sections) {
       const width = dimensions.width || 400;
       const height = dimensions.height || 300;
       
-      galleryHtml += `        <figure class="gallery-image">`;
-      galleryHtml += `          <img src="${escapeHtml(websitePath)}" alt="${escapeHtml(image.alt)}" width="${width}" height="${height}" loading="lazy">`;
+      galleryHtml += `        <figure>\n`;
+      galleryHtml += `          <img src="${escapeHtml(websitePath)}" alt="${escapeHtml(image.alt)}" width="${width}" height="${height}" loading="lazy">\n`;
       
       if (image.caption) {
-        galleryHtml += `          <figcaption class="gallery-caption">${escapeHtml(image.caption)}</figcaption>`;
+        galleryHtml += `          <figcaption>${escapeHtml(image.caption)}</figcaption>\n`;
       }
       
       if (image.description) {
-        galleryHtml += `          <p class="gallery-description">${escapeHtml(image.description)}</p>`;
+        galleryHtml += `          <p>${escapeHtml(image.description)}</p>\n`;
       }
       
       galleryHtml += '        </figure>\n';
@@ -191,7 +188,6 @@ async function generateGallery(sections) {
     galleryHtml += '    </div>\n';
   }
   
-  galleryHtml += '  </div>\n';
   return galleryHtml;
 }
 

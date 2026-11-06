@@ -17,12 +17,13 @@
       "id": "landscapes",
       "title": "Landscapes",
       "year": "2020-2024",
-      "description": "A collection of landscape paintings capturing natural beauty.",
+      "description": "      Donec eget felis non libero tincidunt varius quis ultrices est. Phasellus lobortis accumsan rutrum. Donec at velit eu magna efficitur posuere. Suspendisse potenti. Cras pellentesque sit amet metus non laoreet. Aenean ut tempus ante, eget vehicula nisl. Sed mollis condimentum faucibus. Nunc cursus tortor orci, sit amet consequat mauris facilisis non. Quisque eros tortor, porttitor quis ornare in, consequat ultricies justo. Proin fringilla gravida pharetra. Proin ut nibh libero. Phasellus ut nisi porttitor, porta tortor non, consequat sapien. Sed ut erat id erat dignissim pellentesque quis eget lectus. Donec consectetur tincidunt eros, quis bibendum lectus vestibulum in. Aenean ligula metus, pharetra at tellus viverra, blandit maximus leo. Etiam rutrum pharetra sollicitudin.",
+      
       "images": [
         {
           "src": "landscape-01.svg",
           "alt": "Oil painting of a mountain landscape at sunset",
-          "caption": "Mountain Sunset",
+          "caption": "Mountain Sunset, Oil on Canvas, 2004",
           "description": "A serene landscape painting depicting mountains under a golden sunset sky."
         },
         {
