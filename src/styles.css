@@ -93,13 +93,6 @@ section {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hero {
-    max-height: 70vh;
-  }
-}
-
 .artist-name {
   /* Fonts */
   font-family: 'Fruktur', cursive;
@@ -153,7 +146,7 @@ section {
 .about p {
   /* Layout */
   text-align: justify;
-  padding: 0px 10%;
+  margin: 0px 10%;
 }
 
 
@@ -168,7 +161,7 @@ section {
   /* Style */
   background-color: rgb(155, 0, 0);
   color: white;
-  box-shadow: rgba(155, 0, 0, 0.3) 0px 10px 10px 0px, rgba(155, 0, 0, 0.5) -20px 10px 20px 0px, rgba(155, 0, 0, 0.5) 20px 10px 20px 0px;
+  box-shadow: rgba(155, 0, 0, 0.3) 0px 10px 10px 0px, rgba(155, 0, 0, 0.3) -20px 10px 10px 0px, rgba(155, 0, 0, 0.3) 20px 10px 10px 0px;
 }
 
 .vertical_twostack {
@@ -205,7 +198,7 @@ section {
   color: #fff;
   text-decoration: none;
 
-  font-size: 2rem;
+  font-size: 1.5rem;
 
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -336,4 +329,16 @@ section {
   padding: 20px 20px;
   text-align: center;
   margin: 0 auto;
+}
+
+
+@media (max-width: 768px) {
+  .hero-image {
+    max-width: 300px;
+  }
+
+  .contact {
+    box-shadow: rgba(155, 0, 0, 0.3) 0px 10px 10px 0px;
+    max-width: 90vw;
+  }
 }
