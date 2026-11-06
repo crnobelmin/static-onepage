@@ -3,6 +3,70 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Hero section mouse tracking
+  const heroImage = document.querySelector('.hero-image');
+  
+  if (heroImage) {
+    function updateHeroImage(x, y) {
+      // Calculate flip based on X position (right half = flip)
+      const viewportWidth = window.innerWidth;
+      const flip = x > viewportWidth / 2 ? -1 : 1;
+      
+      // Calculate rotation based on Y position (center of screen = 0)
+      const viewportHeight = window.innerHeight;
+      const rotation = ((y - viewportHeight / 2) / viewportHeight) * -60; // max -15deg to 15deg
+      
+      // When flipped, invert the rotation direction so vertical movement feels natural
+      const effectiveRotation = flip * rotation;
+      
+      heroImage.style.setProperty('--mouse-rotation', effectiveRotation + 'deg');
+      heroImage.style.setProperty('--mouse-flip', flip);
+    }
+    
+    // Initial position
+    updateHeroImage(window.innerWidth / 2, window.innerHeight / 2);
+    
+    // Update on mouse move (desktop)
+    document.addEventListener('mousemove', function(e) {
+      updateHeroImage(e.clientX, e.clientY);
+    });
+    
+    // Update on touch move (mobile)
+    document.addEventListener('touchmove', function(e) {
+      const touch = e.touches[0];
+      if (touch) {
+        updateHeroImage(touch.clientX, touch.clientY);
+      }
+    }, { passive: true });
+    
+    // Tap handler for mobile - dog looks at tap location and holds
+    document.addEventListener('touchstart', function(e) {
+      const touch = e.touches[0];
+      if (touch) {
+        updateHeroImage(touch.clientX, touch.clientY);
+        heroImage.dataset.lastTapX = touch.clientX;
+        heroImage.dataset.lastTapY = touch.clientY;
+      }
+    }, { passive: true });
+    
+    // On touch end, keep the dog looking at the last tap position
+    document.addEventListener('touchend', function() {
+      const lastTapX = heroImage.dataset.lastTapX || window.innerWidth / 2;
+      const lastTapY = heroImage.dataset.lastTapY || window.innerHeight / 2;
+      updateHeroImage(lastTapX, lastTapY);
+    });
+  }
+  
+  // Add initial wiggle animation to hero image on page load
+  if (heroImage) {
+    heroImage.classList.add('wiggle-in');
+    // Remove class after animation completes
+    setTimeout(() => {
+      heroImage.classList.remove('wiggle-in');
+    }, 600);
+  }
+  
+  // Lightbox functionality
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
   const lightboxCaption = document.getElementById('lightbox-caption');
