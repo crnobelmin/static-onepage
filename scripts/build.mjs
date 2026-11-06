@@ -171,8 +171,10 @@ async function generateGallery(sections) {
       const height = dimensions.height || 300;
       
       galleryHtml += `        <figure>\n`;
-      galleryHtml += `          <img src="${escapeHtml(websitePath)}" alt="${escapeHtml(image.alt)}" width="${width}" height="${height}" loading="lazy">\n`;
-      
+      galleryHtml += `          <a href="${escapeHtml(websitePath)}" target="_blank" rel="noopener noreferrer">\n`;
+      galleryHtml += `            <img src="${escapeHtml(websitePath)}" alt="${escapeHtml(image.alt)}" width="${width}" height="${height}" loading="lazy">\n`;
+      galleryHtml += `          </a>\n`
+
       if (image.caption) {
         galleryHtml += `          <figcaption>${escapeHtml(image.caption)}</figcaption>\n`;
       }
