@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, copyFileSync } from 'fs';
 import { readdir } from 'fs/promises';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -103,7 +103,7 @@ async function getImageDimensions(filePath) {
   }
 }
 
-function generateAboutSection(section) {
+async function generateAboutSection(section) {
   if (!section || section.id !== 'about') {
     return '';
   }
@@ -113,7 +113,7 @@ function generateAboutSection(section) {
   if (section.portrait && section.portrait.src) {
     const websitePath = 'images/gallery/' + section.portrait.src;
     const imagePath = join(PROJECT_ROOT, 'public', 'images', 'gallery', section.portrait.src);
-    const dimensions = getImageDimensions(imagePath);
+    const dimensions = await getImageDimensions(imagePath);
     const width = dimensions.width || 400;
     const height = dimensions.height || 400;
     aboutHtml += `    <img src="${escapeHtml(websitePath)}" alt="Artist portrait" width="${width}" height="${height}" loading="lazy" class="artist-portrait">\n`;
@@ -223,6 +223,7 @@ async function copyStaticAssets() {
   const publicPath = join(PROJECT_ROOT, 'public');
   const distPath = join(PROJECT_ROOT, 'dist');
   
+  // Copy static files from src/
   const srcFiles = ['styles.css', 'main.js'];
   for (const file of srcFiles) {
     const source = join(srcPath, file);
@@ -234,6 +235,7 @@ async function copyStaticAssets() {
     }
   }
   
+  // Copy individual files from public/ (favicon, robots, sitemap)
   const publicFiles = ['favicon.svg', 'robots.txt', 'sitemap.xml'];
   for (const file of publicFiles) {
     const source = join(publicPath, file);
@@ -241,8 +243,42 @@ async function copyStaticAssets() {
     if (existsSync(source)) {
       writeFileSync(destination, readFileSync(source, 'utf8'));
     } else {
-            console.warn(`Warning: ${file} not found, skipping...`);
+      console.warn(`Warning: ${file} not found, skipping...`);
     }
+  }
+  
+  // Copy entire public/images/ directory to dist/images/
+  const imagesSource = join(publicPath, 'images');
+  const imagesDestination = join(distPath, 'images');
+  if (existsSync(imagesSource)) {
+    if (!existsSync(imagesDestination)) {
+      mkdirSync(imagesDestination, { recursive: true });
+    }
+    // Recursively copy all files and subdirectories
+    const entries = await readdir(imagesSource, { withFileTypes: true });
+    for (const entry of entries) {
+      const sourcePath = join(imagesSource, entry.name);
+      const destPath = join(imagesDestination, entry.name);
+      if (entry.isDirectory()) {
+        mkdirSync(destPath, { recursive: true });
+        const destEntries = await readdir(destPath, { withFileTypes: true });
+        for (const destEntry of destEntries) {
+          const finalSource = join(sourcePath, destEntry.name);
+          const finalDest = join(destPath, destEntry.name);
+          if (existsSync(finalSource)) {
+            if (destEntry.isFile()) {
+              copyFileSync(finalSource, finalDest);
+            } else if (destEntry.isDirectory()) {
+              mkdirSync(finalDest, { recursive: true });
+            }
+          }
+        }
+      } else if (entry.isFile()) {
+        copyFileSync(sourcePath, destPath);
+      }
+    }
+  } else {
+    console.warn(`Warning: ${imagesSource} not found, skipping...`);
   }
 }
 
@@ -253,7 +289,7 @@ async function main() {
     checkImageFiles(galleryData.sections);
     
     const aboutSection = galleryData.sections.find(s => s.id === 'about');
-    const aboutContent = generateAboutSection(aboutSection);
+    const aboutContent = await generateAboutSection(aboutSection);
     const contactContent = generateContactSection(aboutSection);
     const galleryContent = await generateGallery(galleryData.sections);
     

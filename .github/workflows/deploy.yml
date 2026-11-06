@@ -49,6 +49,17 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
+  
+      - name: Debug generated files
+        run: |
+          echo "=== DIST CONTENTS ==="
+          find dist -type f
+
+          echo "=== IMAGE FILES ==="
+          find dist/images -type f
+
+          echo "=== CHECK TARGET IMAGE ==="
+          ls -lah dist/images/dog_skeleton.png
 
   deploy:
     environment:
