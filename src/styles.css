@@ -59,10 +59,6 @@ main {
   background-color: rgb(245, 245, 245);
 }
 
-section {
-  padding: 20px;
-}
-
 
 /* -------------------- HERO SECTION -------------------- */
 .hero {
@@ -157,6 +153,8 @@ section {
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-bottom: 40px;
+  margin-top: 20px;
 
   /* Style */
   background-color: rgb(155, 0, 0);
@@ -339,6 +337,5 @@ section {
 
   .contact {
     box-shadow: rgba(155, 0, 0, 0.3) 0px 10px 10px 0px;
-    max-width: 90vw;
   }
 }
